@@ -1,0 +1,20 @@
+body {
+	padding-top: 50px;
+}
+.twitter {
+	padding: 40px 15px;
+	text-align: center;
+}
+li {
+	display: none;
+}
+#reset {
+	display: none;
+	margin-left: auto;
+    margin-right: auto;
+}
+#start {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}

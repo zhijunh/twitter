@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twitter Effect</title>
+
+<!-- Css -->
+<link href="twitter.css" rel="stylesheet">
+<link href="bootstrap.css" rel="stylesheet">
+<!-- IE 9 -->
+<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="index.html">Twitter Test</a> </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</nav>
+<div class="container">
+  <div class="twitter">
+    <h1>Tweets Display</h1>
+    <button type="button" class="btn btn-lg btn-default" id="start" >Start</button>
+    <button type="button" class="btn btn-lg btn-default" id="reset" >Reset</button>
+    <div class="row">
+      <ul class="list-unstyled">
+        <li>RT @UN_Women: ED @phumzileunwomen is in #SierraLeone to discuss gender dimensions of #Ebola: http://t.co/q7xeRctYt1 #EbolaResponse http://?</li>
+        <li>RT @thegrugq: 0day are the Ebola of infosec, sounds really scary but your real threats are car accidents and heart disease (passwords and 0?</li>
+        <li>RT @SolheimDAC: "Global coalition of inaction" contributed to Ebola epidemics. Killing critic from Doctors Without Borders: http://t.co/i3w?</li>
+        <li>New Ebola case in Liberia may have been contracted during sex with Ebola survivor http://t.co/ajezJRLj4X</li>
+        <li>RT @mwbloem: 10yo Helvina wants to be a doctor so she can help people. Helvina lost 19 family members to #Ebola @UNICEF_Liberia http://t.co?</li>
+        <li>RT @cnni: Nanotechnology is about to join the fight against cancer and Ebola: http://t.co/JyD2MpuM2X http://t.co/7urZQwHyRn</li>
+        <li>Fighting Ebola with a holistic vision of #bigdata http://t.co/9Vs2gf7GCl #health http://t.co/PrOWUSesGz</li>
+        <li>Thursday @EmoryUniversity: "Solve the Outbreak" Workshop for teens, part of @ATLSciFest http://t.co/6K97dyYLtO #Ebola #ATLSciFest</li>
+        <li>Thursday @EmoryUniversity: "Solve the Outbreak" Workshop for teens, part of @ATLSciFest http://t.co/6Zk4J9wXcZ #Ebola #ATLSciFest</li>
+        <li>RT @cnni: Nanotechnology is about to join the fight against cancer and Ebola: http://t.co/JyD2MpuM2X http://t.co/7urZQwHyRn</li>
+        <li>RT @cnni: Nanotechnology is about to join the fight against cancer and Ebola: http://t.co/JyD2MpuM2X http://t.co/7urZQwHyRn</li>
+        <li>RT @cnni: Nanotechnology is about to join the fight against cancer and Ebola: http://t.co/JyD2MpuM2X http://t.co/7urZQwHyRn</li>
+        <li>RT @phumzileunwomen: Ebola handshake with president! Saftey protocols are important. http://t.co/iSzLek7DjP</li>
+        <li>Nunca pens?que ver a Dani Alves cantando... #Ebola</li>
+        <li>I have a cough and everyone treating it like I got Ebola chill compadres</li>
+        <li>RT @PSIimpact: .@BillGates: The #Ebola Crisis Was Terrible. But Next Time Could Be Much Worse. http://t.co/owhINq4sfT #healthsystems http:/?</li>
+        <li>I added a video to a @YouTube playlist http://t.co/hZdd08YgbI CNN News -Fighting cancer and Ebola with nanoparticle  -CNN World News</li>
+        <li>#Reuters California #officials say #traveler does not have Ebola http://t.co/LNGrUfOuqn</li>
+        <li>Ebola: Study announces a durable vaccine http://t.co/qcQL8cNHkn #animals</li>
+        <li>Ebola: Study announces a durable vaccine http://t.co/OuPCrwpvoS #animals</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- /.container --> 
+
+<!-- jQuery  --> 
+
+<script src="jquery-1.11.2.min.js"></script> 
+<script src="bootstrap.js"></script> 
+<script type="text/javascript">
+		var $newul = $('.row ul'),
+		rowHeight = $newul.find('li').outerHeight(true),//find out the heightOfLi
+		rowSpeed = 600, //how fast the row moves
+		fadeInSpeed = 600,//fidein time
+		timer, speed = 1000;//timer
+		
+		function newRow(){
+		// first move down row ul.
+			$newul.animate({
+				top: rowHeight + 'px'
+				}, rowSpeed, function(){
+				// when .row ul move to the specific position, find out the last li
+				var $last = $newul.find('li:last');
+				// make a copy and hide them
+				// add $last to the firs li within .row ul
+				// use fadein fact to display and after display, continue the newsScroll
+				$last.clone().hide().prependTo($newul).fadeIn(fadeInSpeed, function(){
+						timer = setTimeout(newRow, speed);
+				});
+				$newul.css('top', 0); // move row ul to the top where positon="0"				
+				$last.remove();	// remove $last			
+			});							
+		}
+		
+	$( "#start" ).click(function() {		
+		$('#start').css('display','none');	
+		$('#reset').css('display','block');
+		// used to control the row showing	
+		timer = setTimeout(newRow, speed); // start the timer	
+		//setTimeout(function() {
+        //$news.fadeOut(1500);
+		//}, 10000);			
+	});
+	
+	$("#reset").click(function() {
+		
+		$('#start').css('display','block');	
+		$('#reset').css('display','none');	
+		
+		location.reload();
+		
+	});
+
+
+
+</script>
+</body>
+</html>
